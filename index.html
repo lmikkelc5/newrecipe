@@ -4,66 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mystyle.css">
-    <title>Christensen Family Recipes</title>
+    <title>The Christensen Family Recipe Box</title>
     <script src="recipes.js" defer></script>
     <script src="site.js" defer></script>
 </head>
-<body>
+<body class="home">
     <main>
-        <header class="site-header">
-            <h1>Christensen Family Recipes</h1>
-            <p class="subtitle">159 recipes</p>
-        </header>
+        <header class="hero">
+            <p class="eyebrow">The Christensen Family</p>
+            <h1>Recipe Box</h1>
+            <p class="lede">159 recipes we make again and again, from Grandma Lambert’s molasses cookies to Café Rio night.</p>
         <div class="search">
             <label for="search" class="visually-hidden">Search recipes or ingredients…</label>
             <input id="search" type="search" placeholder="Search recipes or ingredients…" autocomplete="off">
         </div>
+            <button id="surprise" class="surprise" type="button" hidden>Surprise me</button>
+        </header>
         <ul id="results" class="recipe-list" hidden></ul>
-        <nav class="tiles" aria-label="Categories" data-hide-on-search>
-            <a class="tile" href="main-dishes.html">
-                <span class="tile-icon" aria-hidden="true">🍗</span>
-                <span class="tile-name">Main Dishes</span>
-                <span class="tile-count">43 recipes</span>
+        <nav class="cards" aria-label="Categories" data-hide-on-search>
+            <a class="card" href="main-dishes.html" style="--tab: #b5472a">
+                <span class="card-head">
+                    <span class="card-title">Main Dishes</span>
+                    <span class="card-count">43</span>
+                </span>
+                <span class="card-lines">
+                    <span>Chicken Chimichangas</span>
+                    <span>Herb Roasted Pork</span>
+                    <span>Red Cream Sauce</span>
+                </span>
+                <span class="card-more">+ 40 more <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile" href="vegetarian.html">
-                <span class="tile-icon" aria-hidden="true">🥦</span>
-                <span class="tile-name">Vegetarian</span>
-                <span class="tile-count">7 recipes</span>
+            <a class="card" href="vegetarian.html" style="--tab: #5f7d3a">
+                <span class="card-head">
+                    <span class="card-title">Vegetarian</span>
+                    <span class="card-count">7</span>
+                </span>
+                <span class="card-lines">
+                    <span>Creamy Lentil Tortilla Soup</span>
+                    <span>Sweet Potato and Black Bean Quinoa Bowls</span>
+                    <span>Weight Watchers Vegetable Soup</span>
+                </span>
+                <span class="card-more">+ 4 more <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile" href="soups.html">
-                <span class="tile-icon" aria-hidden="true">🍲</span>
-                <span class="tile-name">Soups</span>
-                <span class="tile-count">10 recipes</span>
+            <a class="card" href="soups.html" style="--tab: #c27a2c">
+                <span class="card-head">
+                    <span class="card-title">Soups</span>
+                    <span class="card-count">10</span>
+                </span>
+                <span class="card-lines">
+                    <span>Bear Creek Minestrone Soup</span>
+                    <span>French Lentil Rice Soup</span>
+                    <span>Minestrone Soup (Homemade)</span>
+                </span>
+                <span class="card-more">+ 7 more <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile" href="salads-and-sides.html">
-                <span class="tile-icon" aria-hidden="true">🥗</span>
-                <span class="tile-name">Salads and Sides</span>
-                <span class="tile-count">15 recipes</span>
+            <a class="card" href="salads-and-sides.html" style="--tab: #2f8a6c">
+                <span class="card-head">
+                    <span class="card-title">Salads and Sides</span>
+                    <span class="card-count">15</span>
+                </span>
+                <span class="card-lines">
+                    <span>Berry and Roasted Almond Salad</span>
+                    <span>Joan's Broccoli Madness Salad</span>
+                    <span>Scalloped Potatoes (Cheddar)</span>
+                </span>
+                <span class="card-more">+ 12 more <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile" href="breakfast.html">
-                <span class="tile-icon" aria-hidden="true">🥞</span>
-                <span class="tile-name">Breakfast</span>
-                <span class="tile-count">13 recipes</span>
+            <a class="card" href="breakfast.html" style="--tab: #c99a24">
+                <span class="card-head">
+                    <span class="card-title">Breakfast</span>
+                    <span class="card-count">13</span>
+                </span>
+                <span class="card-lines">
+                    <span>Blender Wheat Waffles</span>
+                    <span>Breakfast Casserole</span>
+                    <span>Oven Pancakes (blender)</span>
+                </span>
+                <span class="card-more">+ 10 more <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile" href="breads.html">
-                <span class="tile-icon" aria-hidden="true">🍞</span>
-                <span class="tile-name">Breads</span>
-                <span class="tile-count">12 recipes</span>
+            <a class="card" href="breads.html" style="--tab: #8f6239">
+                <span class="card-head">
+                    <span class="card-title">Breads</span>
+                    <span class="card-count">12</span>
+                </span>
+                <span class="card-lines">
+                    <span>Ooni Pizza Dough</span>
+                    <span>Rolls (Easy!)</span>
+                    <span>Sourdough Sandwich Bread</span>
+                </span>
+                <span class="card-more">+ 9 more <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile" href="dips-salsas-dressings.html">
-                <span class="tile-icon" aria-hidden="true">🌶️</span>
-                <span class="tile-name">Dips, Salsas, and Dressings</span>
-                <span class="tile-count">6 recipes</span>
+            <a class="card" href="dips-salsas-dressings.html" style="--tab: #b23a48">
+                <span class="card-head">
+                    <span class="card-title">Dips, Salsas, and Dressings</span>
+                    <span class="card-count">6</span>
+                </span>
+                <span class="card-lines">
+                    <span>Carol’s Salsa</span>
+                    <span>Homemade Caesar Salad Dressing</span>
+                    <span>Mexican Dip</span>
+                </span>
+                <span class="card-more">+ 3 more <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile" href="desserts.html">
-                <span class="tile-icon" aria-hidden="true">🍰</span>
-                <span class="tile-name">Desserts</span>
-                <span class="tile-count">51 recipes</span>
+            <a class="card" href="desserts.html" style="--tab: #a8507a">
+                <span class="card-head">
+                    <span class="card-title">Desserts</span>
+                    <span class="card-count">51</span>
+                </span>
+                <span class="card-lines">
+                    <span>Cinnamon Cake (Reagan Risk)</span>
+                    <span>Grandma Lambert’s Apple Crisp</span>
+                    <span>Rice Krispie Treats</span>
+                </span>
+                <span class="card-more">+ 48 more <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile" href="drinks-and-other.html">
-                <span class="tile-icon" aria-hidden="true">🎄</span>
-                <span class="tile-name">Drinks and Other</span>
-                <span class="tile-count">2 recipes</span>
+            <a class="card" href="drinks-and-other.html" style="--tab: #3d6a8f">
+                <span class="card-head">
+                    <span class="card-title">Drinks and Other</span>
+                    <span class="card-count">2</span>
+                </span>
+                <span class="card-lines">
+                    <span>Candy Cane Drink</span>
+                    <span>Cinnamon Ornaments</span>
+                    <span aria-hidden="true"></span>
+                </span>
+                <span class="card-more">See all <span aria-hidden="true">→</span></span>
             </a>
         </nav>
     </main>

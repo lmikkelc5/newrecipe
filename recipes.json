@@ -3,7 +3,7 @@
     {
       "name": "Main Dishes",
       "slug": "main-dishes",
-      "icon": "🍗",
+      "color": "#b5472a",
       "recipes": [
         "alfredo_sauce", "angel_hair_pasta_with_chicken", "baked_salmon", "bbq_chicken__janet", "beef_stew",
         "bev_s_marinade", "café_rio_dinner", "chicken_chimichangas", "chicken_enchiladas", "chicken_pot_pie",
@@ -22,7 +22,7 @@
     {
       "name": "Vegetarian",
       "slug": "vegetarian",
-      "icon": "🥦",
+      "color": "#5f7d3a",
       "recipes": [
         "the_easiest__vegetable_stir_fry", "weight_watchers_vegetable_soup", "creamy_lentil_tortilla_soup",
         "chickpea_and_spinach_stuffed_sweet_potatoes", "chickpea_vegetable_nuggets",
@@ -32,7 +32,7 @@
     {
       "name": "Soups",
       "slug": "soups",
-      "icon": "🍲",
+      "color": "#c27a2c",
       "recipes": [
         "basic_ham_and_bean_soup", "bear_creek_minestrone_soup", "chicken_gnocchi_soup", "french_lentil_rice_soup",
         "healthy_white_chicken_chili", "minestrone_soup__homemade", "pasta_fagioli_with_spinach",
@@ -42,7 +42,7 @@
     {
       "name": "Salads and Sides",
       "slug": "salads-and-sides",
-      "icon": "🥗",
+      "color": "#2f8a6c",
       "recipes": [
         "au_gratin_potatoes", "avocado_chicken_salad", "berry_and_roasted_almond_salad",
         "french_fries__just_like_the_real_thing", "hard_boiled_eggs_in_instant_pot___5_5_5_method",
@@ -54,7 +54,7 @@
     {
       "name": "Breakfast",
       "slug": "breakfast",
-      "icon": "🥞",
+      "color": "#c99a24",
       "recipes": [
         "blender_wheat_pancakes", "blender_wheat_waffles", "blueberry_muffins", "bran_muffins__mom",
         "breakfast_casserole", "cheese_strata", "mike_s_muffins", "oven_pancakes", "oven_pancakes__blender",
@@ -64,7 +64,7 @@
     {
       "name": "Breads",
       "slug": "breads",
-      "icon": "🍞",
+      "color": "#8f6239",
       "recipes": [
         "bananabread", "cloud_biscuits", "heavy_french_bread", "oonipizzadough", "pizzadough",
         "quick_and_easy_pizza_crust__allrecipes_com", "rolls__easy", "sourdoughbread", "sourdoughsandwichbread",
@@ -74,7 +74,7 @@
     {
       "name": "Dips, Salsas, and Dressings",
       "slug": "dips-salsas-dressings",
-      "icon": "🌶️",
+      "color": "#b23a48",
       "recipes": [
         "carol_s_salsa", "dressing", "freezer_salsa__diana", "homemade_caesar_salad_dressing", "mexican_dip",
         "real_simple_hummus"
@@ -83,7 +83,7 @@
     {
       "name": "Desserts",
       "slug": "desserts",
-      "icon": "🍰",
+      "color": "#a8507a",
       "recipes": [
         "almond_joy_truffles", "apricot_cake", "baked_caramel_popcorn", "buttermilk_brownies", "candy__hay_stacks",
         "caramels", "cheesecake_recipe", "chocolate_chip_cookies", "chocolate_chip_cookies_1", "chocolatechip",
@@ -104,7 +104,7 @@
     {
       "name": "Drinks and Other",
       "slug": "drinks-and-other",
-      "icon": "🎄",
+      "color": "#3d6a8f",
       "recipes": ["candy_cane_drink", "cinnamon_ornaments"]
     }
   ],

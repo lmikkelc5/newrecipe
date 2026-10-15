@@ -1,35 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+/* ---------- theme ---------- */
+
 :root {
     color-scheme: light dark;
-    --bg: #efedfc;
-    --surface: #ffffff;
-    --text: #1f1d2b;
-    --muted: #686480;
-    --accent: #4a3d9c;
-    --accent-soft: #e4e0f9;
-    --border: #dcd8ef;
-    --warn-bg: #fff3d4;
-    --warn-text: #6b4a00;
-    --warn-border: #efd38a;
-    --shadow: 0 1px 2px rgb(30 20 80 / 6%), 0 4px 14px rgb(30 20 80 / 6%);
-    --radius: 14px;
-    --font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', system-ui, sans-serif;
+
+    --paper: #f5eee2;
+    --paper-hi: #fbf7ef;
+    --card: #fffdf8;
+    --ink: #2b221b;
+    --muted: #6f6254;
+    --accent: #b5472a;
+    --accent-ink: #9a3a1f;
+    --rule: #d6e1ec;          /* blue index-card lines */
+    --margin-rule: #e3a19b;   /* red index-card line */
+    --pen: #2c4a85;           /* "handwriting" ink */
+    --border: #e4d9c6;
+    --border-strong: #cdbfa8;
+    --warn-bg: #fdf0cf;
+    --warn-ink: #6b4a00;
+    --warn-border: #ecd08a;
+    --shadow: 0 1px 0 rgb(80 50 20 / 6%), 0 12px 28px -14px rgb(80 50 20 / 35%);
+    --shadow-lift: 0 1px 0 rgb(80 50 20 / 6%), 0 22px 40px -18px rgb(80 50 20 / 45%);
+
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --hand: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #17161f;
-        --surface: #221f2e;
-        --text: #ece9f7;
-        --muted: #a6a2bd;
-        --accent: #b4a9ff;
-        --accent-soft: #2f2a47;
-        --border: #36324c;
-        --warn-bg: #3a2f12;
-        --warn-text: #f3d184;
-        --warn-border: #5c4a1c;
-        --shadow: none;
+        --paper: #1c1814;
+        --paper-hi: #251f19;
+        --card: #27211b;
+        --ink: #f2e9dc;
+        --muted: #b4a693;
+        --accent: #e2885f;
+        --accent-ink: #f0a07a;
+        --rule: #3a332b;
+        --margin-rule: #7a3f37;
+        --pen: #a9c1ec;
+        --border: #3b332b;
+        --border-strong: #54493d;
+        --warn-bg: #3a2f14;
+        --warn-ink: #f3d184;
+        --warn-border: #5f4c1e;
+        --shadow: 0 1px 0 rgb(0 0 0 / 30%), 0 12px 28px -14px rgb(0 0 0 / 70%);
+        --shadow-lift: 0 1px 0 rgb(0 0 0 / 30%), 0 22px 40px -18px rgb(0 0 0 / 80%);
     }
 }
+
+/* ---------- base ---------- */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -39,44 +60,39 @@
     display: none !important;
 }
 
+html {
+    background: var(--paper);
+}
+
 body {
-    max-width: 46rem;
+    max-width: 44rem;
     margin: 0 auto;
-    padding: 1.25rem 1rem 4rem;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font);
+    padding: 1.25rem 1.25rem 5rem;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
     font-size: 1.0625rem;
-    line-height: 1.55;
+    line-height: 1.6;
     -webkit-text-size-adjust: 100%;
 }
 
+body.home {
+    max-width: 68rem;
+    background: transparent;
+}
+
+html:has(body.home) {
+    background: radial-gradient(ellipse 70rem 40rem at 50% -10rem, var(--paper-hi), var(--paper)) no-repeat var(--paper);
+}
+
 a {
-    color: var(--accent);
+    color: var(--accent-ink);
 }
 
-h1, h3, h4 {
-    line-height: 1.2;
-}
-
-h1 {
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-    margin: 0.5rem 0 1rem;
-}
-
-h3 {
-    font-size: 1.4rem;
-    margin: 2rem 0 0.75rem;
-    padding-bottom: 0.35rem;
-    border-bottom: 2px solid var(--accent-soft);
-}
-
-h4 {
-    margin: 1.25rem 0 0.5rem;
-    color: var(--muted);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+h1, h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .visually-hidden {
@@ -88,197 +104,228 @@ h4 {
     white-space: nowrap;
 }
 
-/* ---------- navigation ---------- */
-
 .crumb a {
     display: inline-block;
-    margin-left: -0.75rem;
-    padding: 0.4rem 0.75rem;
-    border-radius: 999px;
-    font-weight: 600;
+    margin-left: -0.6rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
     font-size: 0.95rem;
+    font-weight: 600;
     text-decoration: none;
 }
 
 .crumb a:hover,
 .crumb a:focus-visible {
-    background: var(--accent-soft);
+    background: var(--card);
 }
 
-/* ---------- recipe pages ---------- */
+/* ---------- home ---------- */
 
-body > ul,
-body > ol {
-    margin: 0 0 1rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    list-style: none;
-}
-
-body > ul {
-    padding: 0.25rem 1.1rem;
-}
-
-body > ul > li {
-    padding: 0.55rem 0;
-    border-bottom: 1px solid var(--border);
-}
-
-body > ol {
-    padding: 0.25rem 1.1rem;
-    counter-reset: step;
-}
-
-body > ol > li {
-    position: relative;
-    padding: 0.75rem 0 0.75rem 2.6rem;
-    border-bottom: 1px solid var(--border);
-    counter-increment: step;
-}
-
-body > ol > li::before {
-    content: counter(step);
-    position: absolute;
-    left: 0;
-    top: 0.7rem;
-    display: grid;
-    place-items: center;
-    width: 1.8rem;
-    height: 1.8rem;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-size: 0.9rem;
-    font-weight: 700;
-}
-
-body > ul > li:last-child,
-body > ol > li:last-child {
-    border-bottom: 0;
-}
-
-/* notes at the end of a recipe */
-body > p {
-    margin: 0.5rem 0;
-    color: var(--muted);
-    font-size: 0.95rem;
-    overflow-wrap: anywhere;
-}
-
-body > ul + p,
-body > ol + p {
-    margin-top: 1.75rem;
-}
-
-.needs-work {
-    padding: 0.6rem 0.85rem;
-    background: var(--warn-bg);
-    color: var(--warn-text);
-    border: 1px solid var(--warn-border);
-    border-radius: 10px;
-}
-
-/* ---------- home and category pages ---------- */
-
-.site-header {
-    margin: 1.5rem 0 1.25rem;
+.hero {
+    padding: 3.5rem 0 1rem;
     text-align: center;
 }
 
-.site-header h1 {
+.eyebrow {
     margin: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
 }
 
-.subtitle {
-    margin: 0.25rem 0 0;
+.hero h1 {
+    margin: 0.1rem 0 0.75rem;
+    font-size: clamp(3.4rem, 13vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+}
+
+.lede {
+    max-width: 30rem;
+    margin: 0 auto 2rem;
     color: var(--muted);
+    font-size: 1.15rem;
+}
+
+.hero .search {
+    max-width: 34rem;
+    margin: 0 auto;
 }
 
 .search input {
     width: 100%;
-    padding: 0.8rem 1rem 0.8rem 2.75rem;
-    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a86a0' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 1rem center / 1.1rem;
-    color: var(--text);
-    border: 1px solid var(--border);
+    padding: 0.9rem 1.1rem 0.9rem 3rem;
+    background: var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a08f7c' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 1.1rem center / 1.15rem;
+    color: var(--ink);
+    border: 1.5px solid var(--border);
     border-radius: 999px;
     box-shadow: var(--shadow);
     font: inherit;
+    font-size: 1.05rem;
+}
+
+.search input::placeholder {
+    color: var(--muted);
 }
 
 .search input:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent), var(--shadow);
 }
 
-.tiles {
+.surprise {
+    margin-top: 1.1rem;
+    padding: 0.5rem 1.15rem;
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--border-strong);
+    border-radius: 999px;
+    font: 600 0.95rem var(--sans);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.surprise::after {
+    content: " →";
+}
+
+.surprise:hover,
+.surprise:focus-visible {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: 0.85rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem 1.75rem;
+    margin-top: 3rem;
 }
 
-.tile {
+.card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 1.25rem 0.75rem;
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    padding: 1.1rem 1.35rem 1rem;
+    background: var(--card);
+    color: var(--ink);
+    border-top: 8px solid var(--tab);
+    border-radius: 3px;
     box-shadow: var(--shadow);
-    text-align: center;
     text-decoration: none;
-    transition: transform 0.15s, border-color 0.15s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.tile:hover,
-.tile:focus-visible {
-    transform: translateY(-2px);
-    border-color: var(--accent);
+.card:nth-child(3n + 1) { transform: rotate(-0.7deg); }
+.card:nth-child(3n + 2) { transform: rotate(0.5deg); }
+.card:nth-child(3n)     { transform: rotate(-0.25deg); }
+
+.card:hover,
+.card:focus-visible {
+    transform: translateY(-4px) rotate(0deg);
+    box-shadow: var(--shadow-lift);
 }
 
-.tile-icon {
-    font-size: 2.2rem;
-    line-height: 1;
+.card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--margin-rule);
 }
 
-.tile-name {
-    font-size: 1.1rem;
+.card-title {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.card-count {
+    color: var(--muted);
+    font-size: 0.95rem;
     font-weight: 700;
 }
 
-.tile-count {
-    color: var(--muted);
-    font-size: 0.85rem;
+.card-lines {
+    display: block;
+    margin: 0.15rem 0 0.75rem;
 }
 
-@media (max-width: 480px) {
-    .tiles {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+.card-lines span {
+    display: block;
+    height: 2.15rem;
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+    color: var(--pen);
+    font-family: var(--hand);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 2.25rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-more {
+    margin-top: auto;
+    color: var(--accent-ink);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+/* ---------- category pages & search results ---------- */
+
+.category-header {
+    margin: 1.75rem 0 1.5rem;
+}
+
+.category-header h1 {
+    margin: 0;
+    font-size: clamp(2.6rem, 9vw, 3.6rem);
+    line-height: 1;
+}
+
+.category-header h1::after {
+    content: "";
+    display: block;
+    width: 3.5rem;
+    height: 6px;
+    margin-top: 0.8rem;
+    background: var(--tab, var(--accent));
+    border-radius: 3px;
+}
+
+.subtitle {
+    margin: 0.6rem 0 0;
+    color: var(--muted);
 }
 
 .recipe-list {
-    margin: 1rem 0 0;
-    padding: 0.25rem 0;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    margin: 1.5rem 0 0;
+    padding: 0.35rem 1.35rem;
+    background: var(--card);
+    border-top: 8px solid var(--tab, var(--accent));
+    border-radius: 3px;
     box-shadow: var(--shadow);
     list-style: none;
+}
+
+.home .recipe-list {
+    max-width: 40rem;
+    margin: 2rem auto 0;
 }
 
 .recipe-list li {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 0.25rem 0.6rem;
-    padding: 0.7rem 1.1rem;
-    border-bottom: 1px solid var(--border);
+    gap: 0.2rem 0.6rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule);
 }
 
 .recipe-list li:last-child {
@@ -286,18 +333,23 @@ body > ol + p {
 }
 
 .recipe-list a {
+    color: var(--ink);
+    font-size: 1.08rem;
     font-weight: 600;
     text-decoration: none;
 }
 
-.recipe-list a:hover {
+.recipe-list a:hover,
+.recipe-list a:focus-visible {
+    color: var(--accent-ink);
     text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 .recipe-list .meta {
     flex-basis: 100%;
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: 0.88rem;
 }
 
 .recipe-list .empty {
@@ -305,27 +357,160 @@ body > ol + p {
 }
 
 .tag {
-    padding: 0.1rem 0.45rem;
+    padding: 0.05rem 0.5rem;
     background: var(--warn-bg);
-    color: var(--warn-text);
+    color: var(--warn-ink);
     border: 1px solid var(--warn-border);
     border-radius: 999px;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     white-space: nowrap;
 }
 
-/* ---------- printing a recipe ---------- */
+/* ---------- recipe pages ---------- */
+
+body > h1 {
+    margin: 0.75rem 0 1.25rem;
+    font-size: clamp(2.3rem, 7.5vw, 3.3rem);
+    line-height: 1.05;
+}
+
+body > h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 2.5rem 0 0.9rem;
+    font-size: 1.65rem;
+}
+
+body > h3::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-strong);
+}
+
+body > h4 {
+    margin: 1.5rem 0 0.55rem;
+    color: var(--accent-ink);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* ingredients: an index card */
+body > ul {
+    margin: 0 0 1rem;
+    padding: 0.3rem 1.35rem;
+    background: var(--card);
+    border-top: 3px solid var(--margin-rule);
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+    list-style: none;
+}
+
+body > ul > li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+body > ul > li:last-child {
+    border-bottom: 0;
+}
+
+/* directions: big numbered steps */
+body > ol {
+    margin: 0 0 1rem;
+    padding: 0;
+    counter-reset: step;
+    list-style: none;
+}
+
+body > ol > li {
+    position: relative;
+    padding: 0.2rem 0 1.15rem 3.1rem;
+    counter-increment: step;
+}
+
+body > ol > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -0.1rem;
+    width: 2.2rem;
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: right;
+}
+
+/* notes at the end of a recipe */
+body > p {
+    margin: 0.5rem 0;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+}
+
+body > ul + p,
+body > ol + p {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-strong);
+}
+
+body > ul + p::before,
+body > ol + p::before {
+    content: "Notes";
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-ink);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+body > p.needs-work {
+    margin: -0.25rem 0 1.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--warn-bg);
+    color: var(--warn-ink);
+    border: 1px solid var(--warn-border);
+    border-radius: 8px;
+    font-size: 0.97rem;
+}
+
+/* ---------- small screens, motion, print ---------- */
+
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 2rem;
+    }
+
+    .cards {
+        gap: 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .card:nth-child(n),
+    .card:hover {
+        transform: none;
+        transition: none;
+    }
+}
 
 @media print {
     :root {
-        --bg: #fff;
-        --surface: #fff;
-        --text: #000;
-        --muted: #444;
-        --border: #ddd;
+        --paper: #fff;
+        --card: #fff;
+        --ink: #000;
+        --muted: #333;
         --shadow: none;
     }
 

@@ -1,5 +1,5 @@
 // Builds the site from recipes.json and the recipe pages in pages/:
-//   - index.html (search + category tiles)
+//   - index.html (search + category cards)
 //   - one page per category (e.g. desserts.html)
 //   - recipes.js (data used by the search box)
 //   - the "← Category" link and "Needs work" note at the top of each recipe page
@@ -64,7 +64,7 @@ for (const [slug, cat] of catOf) {
 recipes.sort(byTitle);
 
 // ---- shared page shell ----
-const page = ({ title, category, body }) => `<!DOCTYPE html>
+const page = ({ title, bodyClass, category, color, body }) => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -74,7 +74,7 @@ const page = ({ title, category, body }) => `<!DOCTYPE html>
     <script src="recipes.js" defer></script>
     <script src="site.js" defer></script>
 </head>
-<body${category ? ` data-category="${category}"` : ''}>
+<body class="${bodyClass}"${category ? ` data-category="${category}" style="--tab: ${color}"` : ''}>
     <main>
 ${body}
     </main>
@@ -85,27 +85,49 @@ ${body}
 const searchBox = placeholder => `        <div class="search">
             <label for="search" class="visually-hidden">${esc(placeholder)}</label>
             <input id="search" type="search" placeholder="${esc(placeholder)}" autocomplete="off">
-        </div>
-        <ul id="results" class="recipe-list" hidden></ul>`;
+        </div>`;
 
 const recipeItem = r => `            <li><a href="pages/${r.slug}.html">${esc(r.title)}</a>${r.needsWork ? '<span class="tag">Needs work</span>' : ''}</li>`;
 
+// A few finished recipes spread across the alphabet, shown on each category card.
+const samplesFor = (list, count = 3) => {
+  const done = list.filter(r => !r.needsWork);
+  const pool = done.length >= count ? done : list;
+  if (pool.length <= count) return pool;
+  return Array.from({ length: count }, (_, i) => pool[Math.floor((i + 0.5) * pool.length / count)]);
+};
+
 // ---- index.html ----
-const tiles = config.categories.map(cat => `            <a class="tile" href="${cat.slug}.html">
-                <span class="tile-icon" aria-hidden="true">${cat.icon}</span>
-                <span class="tile-name">${esc(cat.name)}</span>
-                <span class="tile-count">${plural(cat.recipes.length)}</span>
-            </a>`).join('\n');
+const cards = config.categories.map(cat => {
+  const list = recipes.filter(r => r.category === cat.slug);
+  const samples = samplesFor(list);
+  const more = list.length - samples.length;
+  return `            <a class="card" href="${cat.slug}.html" style="--tab: ${cat.color}">
+                <span class="card-head">
+                    <span class="card-title">${esc(cat.name)}</span>
+                    <span class="card-count">${list.length}</span>
+                </span>
+                <span class="card-lines">
+${samples.map(r => `                    <span>${esc(r.title)}</span>`)
+    .concat(Array(Math.max(0, 3 - samples.length)).fill('                    <span aria-hidden="true"></span>')).join('\n')}
+                </span>
+                <span class="card-more">${more > 0 ? `+ ${more} more` : 'See all'} <span aria-hidden="true">→</span></span>
+            </a>`;
+}).join('\n');
 
 fs.writeFileSync(path.join(root, 'index.html'), page({
-  title: 'Christensen Family Recipes',
-  body: `        <header class="site-header">
-            <h1>Christensen Family Recipes</h1>
-            <p class="subtitle">${plural(recipes.length)}</p>
-        </header>
+  title: 'The Christensen Family Recipe Box',
+  bodyClass: 'home',
+  body: `        <header class="hero">
+            <p class="eyebrow">The Christensen Family</p>
+            <h1>Recipe Box</h1>
+            <p class="lede">${recipes.length} recipes we make again and again, from Grandma Lambert’s molasses cookies to Café Rio night.</p>
 ${searchBox('Search recipes or ingredients…')}
-        <nav class="tiles" aria-label="Categories" data-hide-on-search>
-${tiles}
+            <button id="surprise" class="surprise" type="button" hidden>Surprise me</button>
+        </header>
+        <ul id="results" class="recipe-list" hidden></ul>
+        <nav class="cards" aria-label="Categories" data-hide-on-search>
+${cards}
         </nav>`,
 }));
 
@@ -113,14 +135,17 @@ ${tiles}
 for (const cat of config.categories) {
   const list = recipes.filter(r => r.category === cat.slug);
   fs.writeFileSync(path.join(root, cat.slug + '.html'), page({
-    title: `${cat.name} – Christensen Family Recipes`,
+    title: `${cat.name} – Christensen Family Recipe Box`,
+    bodyClass: 'category',
     category: cat.slug,
-    body: `        <nav class="crumb"><a href="index.html">← All recipes</a></nav>
-        <header class="site-header">
-            <h1><span aria-hidden="true">${cat.icon}</span> ${esc(cat.name)}</h1>
+    color: cat.color,
+    body: `        <nav class="crumb"><a href="index.html">← Recipe Box</a></nav>
+        <header class="category-header">
+            <h1>${esc(cat.name)}</h1>
             <p class="subtitle">${plural(list.length)}</p>
         </header>
 ${searchBox(`Search ${cat.name.toLowerCase()}…`)}
+        <ul id="results" class="recipe-list" hidden></ul>
         <ul class="recipe-list" data-hide-on-search>
 ${list.map(recipeItem).join('\n')}
         </ul>`,

@@ -1,5 +1,16 @@
-// Search box for the home page and category pages. Data comes from recipes.js.
+// Search box and "Surprise me" button for the home page and category pages.
+// Data comes from recipes.js.
 (function () {
+  const surprise = document.getElementById('surprise');
+  if (surprise && window.RECIPES) {
+    const finished = RECIPES.filter(r => !r.needsWork);
+    surprise.hidden = false;
+    surprise.addEventListener('click', () => {
+      const r = finished[Math.floor(Math.random() * finished.length)];
+      location.href = 'pages/' + r.slug + '.html';
+    });
+  }
+
   const input = document.getElementById('search');
   const results = document.getElementById('results');
   if (!input || !results || !window.RECIPES) return;
