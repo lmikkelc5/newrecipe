@@ -62,6 +62,10 @@
     }
   }
 
+  // Allow links like index.html?q=zucchini
+  const fromUrl = new URLSearchParams(location.search).get('q');
+  if (fromUrl) input.value = fromUrl;
+
   input.addEventListener('input', update);
   update();
 })();

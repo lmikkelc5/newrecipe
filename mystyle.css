@@ -1,22 +1,340 @@
-h1, h3 {
-    text-align: center;
-    text-decoration: wavy;
+:root {
+    color-scheme: light dark;
+    --bg: #efedfc;
+    --surface: #ffffff;
+    --text: #1f1d2b;
+    --muted: #686480;
+    --accent: #4a3d9c;
+    --accent-soft: #e4e0f9;
+    --border: #dcd8ef;
+    --warn-bg: #fff3d4;
+    --warn-text: #6b4a00;
+    --warn-border: #efd38a;
+    --shadow: 0 1px 2px rgb(30 20 80 / 6%), 0 4px 14px rgb(30 20 80 / 6%);
+    --radius: 14px;
+    --font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', system-ui, sans-serif;
 }
 
-ul{
-    list-style-type: none;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #17161f;
+        --surface: #221f2e;
+        --text: #ece9f7;
+        --muted: #a6a2bd;
+        --accent: #b4a9ff;
+        --accent-soft: #2f2a47;
+        --border: #36324c;
+        --warn-bg: #3a2f12;
+        --warn-text: #f3d184;
+        --warn-border: #5c4a1c;
+        --shadow: none;
+    }
 }
 
-ol{
-    margin-left: 0px;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
-    color: rgb(0, 0, 33);
+[hidden] {
+    display: none !important;
 }
 
 body {
-    background-color: rgb(239, 237, 252);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 4rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    color: var(--accent);
+}
+
+h1, h3, h4 {
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin: 0.5rem 0 1rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid var(--accent-soft);
+}
+
+h4 {
+    margin: 1.25rem 0 0.5rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ---------- navigation ---------- */
+
+.crumb a {
+    display: inline-block;
+    margin-left: -0.75rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
+.crumb a:hover,
+.crumb a:focus-visible {
+    background: var(--accent-soft);
+}
+
+/* ---------- recipe pages ---------- */
+
+body > ul,
+body > ol {
+    margin: 0 0 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    list-style: none;
+}
+
+body > ul {
+    padding: 0.25rem 1.1rem;
+}
+
+body > ul > li {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+body > ol {
+    padding: 0.25rem 1.1rem;
+    counter-reset: step;
+}
+
+body > ol > li {
+    position: relative;
+    padding: 0.75rem 0 0.75rem 2.6rem;
+    border-bottom: 1px solid var(--border);
+    counter-increment: step;
+}
+
+body > ol > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    display: grid;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+body > ul > li:last-child,
+body > ol > li:last-child {
+    border-bottom: 0;
+}
+
+/* notes at the end of a recipe */
+body > p {
+    margin: 0.5rem 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+body > ul + p,
+body > ol + p {
+    margin-top: 1.75rem;
+}
+
+.needs-work {
+    padding: 0.6rem 0.85rem;
+    background: var(--warn-bg);
+    color: var(--warn-text);
+    border: 1px solid var(--warn-border);
+    border-radius: 10px;
+}
+
+/* ---------- home and category pages ---------- */
+
+.site-header {
+    margin: 1.5rem 0 1.25rem;
+    text-align: center;
+}
+
+.site-header h1 {
+    margin: 0;
+}
+
+.subtitle {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+}
+
+.search input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.75rem;
+    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a86a0' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 1rem center / 1.1rem;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    font: inherit;
+}
+
+.search input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 1.25rem 0.75rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.15s, border-color 0.15s;
+}
+
+.tile:hover,
+.tile:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.tile-icon {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+.tile-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.tile-count {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    .tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.recipe-list {
+    margin: 1rem 0 0;
+    padding: 0.25rem 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    list-style: none;
+}
+
+.recipe-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.6rem;
+    padding: 0.7rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.recipe-list li:last-child {
+    border-bottom: 0;
+}
+
+.recipe-list a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.recipe-list a:hover {
+    text-decoration: underline;
+}
+
+.recipe-list .meta {
+    flex-basis: 100%;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.recipe-list .empty {
+    color: var(--muted);
+}
+
+.tag {
+    padding: 0.1rem 0.45rem;
+    background: var(--warn-bg);
+    color: var(--warn-text);
+    border: 1px solid var(--warn-border);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ---------- printing a recipe ---------- */
+
+@media print {
+    :root {
+        --bg: #fff;
+        --surface: #fff;
+        --text: #000;
+        --muted: #444;
+        --border: #ddd;
+        --shadow: none;
+    }
+
+    body {
+        max-width: none;
+        font-size: 11pt;
+    }
+
+    .crumb {
+        display: none;
+    }
 }
