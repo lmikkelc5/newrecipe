@@ -1,0 +1,157 @@
+{
+  "categories": [
+    {
+      "name": "Main Dishes",
+      "slug": "main-dishes",
+      "icon": "🍗",
+      "recipes": [
+        "alfredo_sauce", "angel_hair_pasta_with_chicken", "baked_salmon", "bbq_chicken__janet", "beef_stew",
+        "bev_s_marinade", "café_rio_dinner", "chicken_chimichangas", "chicken_enchiladas", "chicken_pot_pie",
+        "chicken_rolls", "chicken_spinach_alfredo__crock_pot", "cree_una_pizza", "crispy_baked_fish_tacos",
+        "crispy_bang_bang_salmon_bites", "curried_chicken_cabbage_cups", "easy_black_beans",
+        "florida_keys_chicken_marinade", "french_dip_beef_sandwiches", "fried_chicken", "grilled_chicken_sandwiches",
+        "ground_turkey_and_bell_peppers", "hawaiian_meatballs_waikiki__from_sue_pulsipher", "herb_roasted_pork",
+        "honey_garlic_chicken", "hot_honey_ground_beef_bowls", "inside_out_ravioli_casserole",
+        "instant_pot_chicken_tacos", "instant_pot_weeknight_chicken_and_rice_burrito_bow",
+        "korean_ground_turkey___rice_bowls", "melt_in_your_mouth__chicken_breast", "mexican_casserole",
+        "onion_roasted_chicken_and_vegetables", "parmesan_crusted_chicken", "pasta_salad", "pork_chops",
+        "red_cream_sauce", "russian_chicken", "shelley_s_spaghetti_sauce", "shepherd_s_pie", "stuffed_french_bread",
+        "stuffed_green_peppers", "teriyaki_chicken__easy_15_minute_recipe"
+      ]
+    },
+    {
+      "name": "Vegetarian",
+      "slug": "vegetarian",
+      "icon": "🥦",
+      "recipes": [
+        "the_easiest__vegetable_stir_fry", "weight_watchers_vegetable_soup", "creamy_lentil_tortilla_soup",
+        "chickpea_and_spinach_stuffed_sweet_potatoes", "chickpea_vegetable_nuggets",
+        "instant_pot_quinoa_burrito_bowls__vegan", "sweet_potato_and_black_bean_quinoa_bowls"
+      ]
+    },
+    {
+      "name": "Soups",
+      "slug": "soups",
+      "icon": "🍲",
+      "recipes": [
+        "basic_ham_and_bean_soup", "bear_creek_minestrone_soup", "chicken_gnocchi_soup", "french_lentil_rice_soup",
+        "healthy_white_chicken_chili", "minestrone_soup__homemade", "pasta_fagioli_with_spinach",
+        "split_pea_soup__grandma_s", "the_best_bean_and_ham_soup__allrecipes_com_benevol", "tortellini_soup"
+      ]
+    },
+    {
+      "name": "Salads and Sides",
+      "slug": "salads-and-sides",
+      "icon": "🥗",
+      "recipes": [
+        "au_gratin_potatoes", "avocado_chicken_salad", "berry_and_roasted_almond_salad",
+        "french_fries__just_like_the_real_thing", "hard_boiled_eggs_in_instant_pot___5_5_5_method",
+        "italian_roasted_vegetables", "joan_s_broccoli_madness_salad", "lion_house_potato_casserole",
+        "oven_roasted_asparagus", "roasted_new_potatoes", "salad", "scalloped_potatoes", "scalloped_potatoes_1",
+        "spinach_salad", "winter_fruit_salad"
+      ]
+    },
+    {
+      "name": "Breakfast",
+      "slug": "breakfast",
+      "icon": "🥞",
+      "recipes": [
+        "blender_wheat_pancakes", "blender_wheat_waffles", "blueberry_muffins", "bran_muffins__mom",
+        "breakfast_casserole", "cheese_strata", "mike_s_muffins", "oven_pancakes", "oven_pancakes__blender",
+        "overnight_oats", "pancakes", "pumpkin_streusel_muffins", "waffles"
+      ]
+    },
+    {
+      "name": "Breads",
+      "slug": "breads",
+      "icon": "🍞",
+      "recipes": [
+        "bananabread", "cloud_biscuits", "heavy_french_bread", "oonipizzadough", "pizzadough",
+        "quick_and_easy_pizza_crust__allrecipes_com", "rolls__easy", "sourdoughbread", "sourdoughsandwichbread",
+        "wheat_bread", "whole_wheat_bread___bev_monroe", "zucchini_bread"
+      ]
+    },
+    {
+      "name": "Dips, Salsas, and Dressings",
+      "slug": "dips-salsas-dressings",
+      "icon": "🌶️",
+      "recipes": [
+        "carol_s_salsa", "dressing", "freezer_salsa__diana", "homemade_caesar_salad_dressing", "mexican_dip",
+        "real_simple_hummus"
+      ]
+    },
+    {
+      "name": "Desserts",
+      "slug": "desserts",
+      "icon": "🍰",
+      "recipes": [
+        "almond_joy_truffles", "apricot_cake", "baked_caramel_popcorn", "buttermilk_brownies", "candy__hay_stacks",
+        "caramels", "cheesecake_recipe", "chocolate_chip_cookies", "chocolate_chip_cookies_1", "chocolatechip",
+        "cinnamon_cake__reagan_risk", "confetti_cookies", "cookie_glaze", "creamy_vanilla_frosting",
+        "double_chocolate_mint_cookies", "double_chocolate_peanut_butter_cookies", "dump_cake",
+        "english_toffee__lion_house", "frosting_glue__mom", "glazed_lemon_loaf", "graham_cracker_crust",
+        "graham_cracker_crust__marissa", "grandma_lambert_s_apple_crisp", "grandma_lambert_s_molasses_cookies",
+        "homemade_oreo_cookies", "island_treasure_cookies", "laura_s_little_maple_cakes",
+        "lemon_poppyseed_cake_with_raspberry_frosting", "lemoncookies", "libby_s_pumpkin_pie__shannon_s_way",
+        "maids_of_honor", "mike_s_dad_s_sugar_cookies", "oatmeal_chocolate_chip_cookies", "oatmeal_cookies",
+        "peachcobbler", "perfect_pie_crust", "perfectly_chocolate_cake", "pumpkin_bundt_cake", "pumpkin_spice_cookies",
+        "quaker_choc_oat_chip_cookies", "quick_chocolate_cake", "raspberry_buttercream_frosting",
+        "regular_buttercream_frosting", "rice_krispie_treats", "sandra_s_chocolicious_frosting", "snickerdoodles",
+        "strawberry_pie", "the_best_chocolate_cake_recipe__ever", "the_best_soft_chocolate_chip_cookies",
+        "triple_chocolate_bundt_cake", "wilton_s_buttercream_icing"
+      ]
+    },
+    {
+      "name": "Drinks and Other",
+      "slug": "drinks-and-other",
+      "icon": "🎄",
+      "recipes": ["candy_cane_drink", "cinnamon_ornaments"]
+    }
+  ],
+  "labels": {
+    "chocolate_chip_cookies": "Chocolate Chip Cookies (Aunt Diana)",
+    "chocolate_chip_cookies_1": "Chocolate Chip Cookies (Andrea Clawson)",
+    "scalloped_potatoes": "Scalloped Potatoes (Cheddar)",
+    "scalloped_potatoes_1": "Scalloped Potatoes (White Sauce)"
+  },
+  "needsWork": {
+    "almond_joy_truffles": "Steps 5 and 8 are missing (probably melting the chocolate).",
+    "bev_s_marinade": "No directions yet.",
+    "buttermilk_brownies": "No directions yet.",
+    "caramels": "The cooking steps are missing.",
+    "chicken_spinach_alfredo__crock_pot": "The first freezer-bag steps are missing.",
+    "chickpea_vegetable_nuggets": "The step for mixing and forming the nuggets is missing.",
+    "cloud_biscuits": "No directions yet.",
+    "crispy_baked_fish_tacos": "The steps for coating the fish are missing.",
+    "dressing": "No directions yet.",
+    "english_toffee__lion_house": "No directions yet.",
+    "freezer_salsa__diana": "The salsa has no directions, and step 1 of the enchilada sauce is missing.",
+    "fried_chicken": "Pepper amount doesn't match: ¼ Tbsp in the ingredients, ¼ tsp in the directions.",
+    "glazed_lemon_loaf": "Lemon rind is used in the steps but isn't in the ingredients.",
+    "grandma_lambert_s_molasses_cookies": "The mixing steps are missing.",
+    "heavy_french_bread": "Check the rise time after punching down (\"one minute\").",
+    "island_treasure_cookies": "Check the flour amount (½ cup + 2 Tbsp seems low).",
+    "laura_s_little_maple_cakes": "Step 4 (combining the wet and dry ingredients) is missing.",
+    "maids_of_honor": "No directions for the lemon filling, and no frosting recipe.",
+    "oven_pancakes": "Only the serving step is here; mixing and baking are missing.",
+    "pancakes": "No directions yet.",
+    "perfect_pie_crust": "The first steps (mixing the flour and cutting in the butter) are missing.",
+    "perfectly_chocolate_cake": "No directions yet.",
+    "pizzadough": "Check the flour amount (\"54 ¼ cups\").",
+    "pumpkin_bundt_cake": "The step for adding the dry ingredients is missing.",
+    "pumpkin_streusel_muffins": "The muffin batter steps are missing.",
+    "quick_chocolate_cake": "No directions yet.",
+    "real_simple_hummus": "The blending step is missing.",
+    "salad": "No directions yet.",
+    "snickerdoodles": "The mixing and cinnamon-sugar steps are missing.",
+    "split_pea_soup__grandma_s": "No directions yet.",
+    "the_best_bean_and_ham_soup__allrecipes_com_benevol": "The step for combining the ingredients is missing.",
+    "the_best_chocolate_cake_recipe__ever": "The frosting ingredient list is missing.",
+    "tortellini_soup": "Step 3 (probably adding the tortellini and kale) is missing.",
+    "waffles": "No directions yet.",
+    "wheat_bread": "The mixing steps are missing.",
+    "whole_wheat_bread___bev_monroe": "The step for adding the flour and other dry ingredients is missing.",
+    "winter_fruit_salad": "Empty: no ingredients or directions yet.",
+    "zucchini_bread": "The steps for adding the zucchini and dry ingredients are missing."
+  }
+}
